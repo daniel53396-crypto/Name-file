@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0d">
+  <title>FIXA — Secure Cloud Storage</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div id="boot-screen" class="boot-screen" aria-live="polite">
+    <div class="loader-ring"><div class="loader-shield">✓</div></div>
+    <div class="brand boot-brand">FIXA</div>
+    <p class="muted">INITIALIZING SECURE STORAGE</p>
+  </div>
+
+  <main id="login-view" class="login-view hidden">
+    <section class="login-card">
+      <div class="brand-mark"><span class="shield">◆</span></div>
+      <div class="brand">FIXA</div>
+      <p class="eyebrow">SECURE CLOUD STORAGE</p>
+      <div class="gold-line"></div>
+      <h1>Welcome back</h1>
+      <p class="muted">Enter your administrator access key to continue.</p>
+      <form id="login-form">
+        <label for="access-key">ADMIN ACCESS KEY</label>
+        <div class="input-wrap"><span aria-hidden="true">▣</span><input id="access-key" type="password" autocomplete="current-password" placeholder="Enter access key" required maxlength="512"></div>
+        <p id="login-error" class="error" role="alert"></p>
+        <button class="primary-btn" type="submit"><span>UNLOCK STORAGE</span><span aria-hidden="true">↗</span></button>
+      </form>
+      <div class="secure-note"><span class="status-dot"></span> ENCRYPTED SESSION · PRIVATE ACCESS</div>
+    </section>
+  </main>
+
+  <main id="dashboard-view" class="dashboard hidden">
+    <header class="topbar">
+      <a class="brand brand-small" href="/" aria-label="FIXA home">FIXA<span class="brand-dot">.</span></a>
+      <div class="topbar-right"><span class="online-pill"><span class="status-dot"></span> SECURE SESSION</span><button id="logout-btn" class="ghost-btn">Sign out ↗</button></div>
+    </header>
+    <section class="welcome-row">
+      <div><p class="eyebrow">YOUR PRIVATE SPACE</p><h1>File <span class="gold-text">Vault</span></h1><p class="muted">Everything you need, securely stored in one place.</p></div>
+      <div class="vault-icon" aria-hidden="true">⬡</div>
+    </section>
+    <section class="stats-grid">
+      <article class="stat-card"><span class="stat-label">TOTAL FILES</span><strong id="total-files">0</strong><span class="stat-foot">Stored in your vault</span></article>
+      <article class="stat-card"><span class="stat-label">TOTAL STORAGE</span><strong id="total-size">0 B</strong><span class="stat-foot">Used space</span></article>
+      <article class="stat-card"><span class="stat-label">VAULT STATUS</span><strong class="status-text">Protected</strong><span class="stat-foot"><span class="status-dot"></span> Authentication active</span></article>
+    </section>
+    <section class="upload-panel">
+      <div class="section-heading"><div><p class="eyebrow">ADD TO YOUR VAULT</p><h2>Upload files</h2></div><span class="file-badge">ALL FILE TYPES</span></div>
+      <form id="upload-form" class="drop-zone">
+        <input id="file-input" type="file" required>
+        <div class="upload-symbol">↑</div>
+        <strong>Choose a file to upload</strong>
+        <p class="muted">ZIP, APK, PDF, images, documents and more</p>
+        <p id="selected-file" class="selected-file">No file selected</p>
+        <button id="upload-btn" class="primary-btn upload-btn" type="submit">UPLOAD TO VAULT <span>↑</span></button>
+        <p id="upload-status" class="muted" role="status"></p>
+      </form>
+    </section>
+    <section class="files-section">
+      <div class="section-heading files-heading"><div><p class="eyebrow">PRIVATE LIBRARY</p><h2>Your files <span id="file-count" class="count-badge">0</span></h2></div><button id="refresh-btn" class="ghost-btn">↻ Refresh</button></div>
+      <div class="search-wrap"><span>⌕</span><input id="search-input" type="search" placeholder="Search your files..." aria-label="Search files"></div>
+      <div id="files-list" class="files-list"></div>
+      <div id="empty-state" class="empty-state"><div class="empty-icon">▤</div><strong>Your vault is empty</strong><p class="muted">Upload your first file to get started.</p></div>
+    </section>
+    <footer>FIXA <span>·</span> PRIVATE BY DESIGN <span>·</span> SECURE FILE MANAGEMENT</footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
